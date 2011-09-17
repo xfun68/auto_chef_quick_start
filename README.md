@@ -12,9 +12,9 @@ If you really want to give it a try, please follow the steps shown as below:
 4. cd auto_chef_quick_start
 5. cp ~/Downloads/CHEF_USERNAME.pem ~/Downloads/CHEF_ORGANIZATION-validator.pem ~/Downloads/knife.rb config/
 6. ./go.sh
-7. :)
+7. Go for a cup of tea or coffee, remember to get back after 10 minutes. :)
 
-FYI, you must have these tools installed correctly on you system, they are:
+FYI, you must have these tools installed correctly on your system, they are:
 
   * build-essential(for Ubuntu) or xcode(for Mac OS X)
   * RVM
