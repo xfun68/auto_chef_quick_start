@@ -3,25 +3,14 @@
 ROOT_DIR="chef_quick_start"
 CHEF_REPO="chef-repo"
 
-USERNAME=`ls ../config/*.pem | grep -P -v "CHEF_USERNAME|CHEF_ORGANIZATION" | grep -P -v "\-validator" | awk -F"[/.]" '{print $5}'`
-ORGANIZATION=`ls ../config/*.pem | grep -P -v "CHEF_USERNAME|CHEF_ORGANIZATION" | grep -P "\-validator" | awk -F"[/.\-]" '{print $5}'`
+USERNAME=`ls config/*.pem | grep -P -v "CHEF_USERNAME|CHEF_ORGANIZATION" | grep -P -v "\-validator" | awk -F"[/.]" '{print $2}'`
+ORGANIZATION=`ls config/*.pem | grep -P -v "CHEF_USERNAME|CHEF_ORGANIZATION" | grep -P "\-validator" | awk -F"[/.\-]" '{print $2}'`
 
 NODE_ADDRESS="33.33.33.10"
 NODE_FQDN="quck-start.chef.tw"
 
 [ -d ${ROOT_DIR} ] || mkdir -p ${ROOT_DIR}
 cd ${ROOT_DIR}
-
-# Put all chef files:
-#-  USERNAME.pem
-#-  ORGANIZATION-validator.pem
-#-  knife.rb
-#-into chef-repo/.chef
-mkdir -p ${CHEF_REPO}/.chef
-cp -f ../config/${USERNAME}.pem ${CHEF_REPO}/.chef
-cp -f ../config/${ORGANIZATION}-validator.pem ${CHEF_REPO}/.chef
-cp -f ../config/knife.rb ${CHEF_REPO}/.chef
-ls -l ${CHEF_REPO}/.chef
 
 # Create a seperate ruby environment using RVM for this Quick Start
 #-and install all needed gems.
@@ -44,7 +33,18 @@ EOF
 bundle check || bundle install
 
 # Create a chef repository by download the template from opscode on Github
-[ -d ${CHEF_REPO} ] || git clone git://github.com/opscode/${CHEF_REPO}.git
+[ -d ${CHEF_REPO}/.git ] || git clone git://github.com/opscode/${CHEF_REPO}.git
+
+# Put all chef files:
+#-  USERNAME.pem
+#-  ORGANIZATION-validator.pem
+#-  knife.rb
+#-into chef-repo/.chef
+mkdir -p ${CHEF_REPO}/.chef
+cp -f ../config/${USERNAME}.pem ${CHEF_REPO}/.chef
+cp -f ../config/${ORGANIZATION}-validator.pem ${CHEF_REPO}/.chef
+cp -f ../config/knife.rb ${CHEF_REPO}/.chef
+ls -l ${CHEF_REPO}/.chef
 
 # Verify Your Workstation
 cd ${CHEF_REPO}
