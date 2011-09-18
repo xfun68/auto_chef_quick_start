@@ -16,6 +16,7 @@ If you really want to give it a try, please follow the steps shown as below:
 5. $ cp ~/Downloads/CHEF_USERNAME.pem ~/Downloads/CHEF_ORGANIZATION-validator.pem ~/Downloads/knife.rb config/
 6. $ ./go.sh
 7. Go for a cup of tea or coffee, remember to get back after 10 minutes. :)
+8. Check it: $ ssh vagrant@33.33.33.10 'ps aux | grep chef-client | grep -v grep'
 
 FYI, you must have these tools installed correctly on your system, they are:
 
