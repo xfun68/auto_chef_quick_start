@@ -7,9 +7,11 @@ How do I play with it?
 If you really want to give it a try, please follow the steps shown as below:
 
 1. Get your chef files, please follow [this][how_to_get_chef_files] if you do not have them yet.
+
     USERNAME.pem
     ORGANIZATION-validator.pem
     knife.rb
+
 2. $ cd /some/path/where/you/want/to/play/in/
 3. $ git clone git@github.com:xfun68/auto_chef_quick_start.git
 4. $ cd auto_chef_quick_start
